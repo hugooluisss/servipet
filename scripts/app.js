@@ -9,11 +9,10 @@ app.config(function($stateProvider, $urlRouterProvider, $cookiesProvider){
 
     $stateProvider.state("dashboard", {
         url: "/dashboard",
-        //controller: "dashboard",
         abstract: true,
         views: {
             "": {
-                //controller: 'ContractSectionController',
+                controller: 'dashboard',
                 templateUrl: "templates/dashboard.html",
             }
         }
@@ -119,7 +118,8 @@ app.config(function($stateProvider, $urlRouterProvider, $cookiesProvider){
 
 app.factory('params', function() { 
     return { 
-        server : 'http://localhost/servipet/wsServipet/'
+        //server : 'http://localhost/servipet/wsServipet/'
+        server: 'http://192.168.2.2/servipet/wsServipet/'
     }; 
 });
 

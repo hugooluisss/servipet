@@ -30,7 +30,7 @@ app.controller('clientes', function($scope, $state, $http, auth, $location, para
     }
 
     $scope.nuevo = function(){
-        $scope.data = {};
+        $scope.data = {icono: ''};
     }
 
     $scope.guardar = function(){
@@ -56,5 +56,17 @@ app.controller('clientes', function($scope, $state, $http, auth, $location, para
 
     $scope.goMascotas = function(obj){
         $state.go('dashboard.mascotas', {"cliente": obj});
+    }
+
+    $scope.vistaPrevia = function(input){
+        if (input[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                console.log(e.target.result);
+                $scope.data.icono = e.target.result;
+                $scope.$apply();
+            }
+            reader.readAsDataURL(input[0]);
+        }
     }
 });

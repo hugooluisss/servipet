@@ -41,7 +41,7 @@ app.controller('mascotas', function($scope, $state, $stateParams, $http, auth, $
     }
 
     $scope.nuevo = function(){
-        $scope.data = {precio: 0, idCliente: $scope.servicio.idCLiente};
+        $scope.data = {precio: 0, idCliente: $scope.servicio.idCLiente, "icono": ""};
     }
 
     $scope.guardar = function(){
@@ -54,6 +54,18 @@ app.controller('mascotas', function($scope, $state, $stateParams, $http, auth, $
             else
                 alert("No se pudo guardar");
         });
+    }
+
+    $scope.vistaPrevia = function(input){
+        if (input[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                console.log(e.target.result);
+                $scope.data.icono = e.target.result;
+                $scope.$apply();
+            }
+            reader.readAsDataURL(input[0]);
+        }
     }
 
     function getLista(){

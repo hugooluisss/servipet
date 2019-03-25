@@ -8,6 +8,7 @@
     <table class="mui-table mui-table--bordered">
         <thead>
             <tr>
+                <th>&nbsp;</th>
                 <th>Nombre</th>
                 <th>Correo electrónico</th>
                 <th>Teléfono</th>
@@ -16,6 +17,9 @@
         </thead>
         <tbody>
             <tr ng-repeat="row in lista">
+                <td>
+                    <img class="img-redonda" ng-src="{{row.icono}}" />
+                </td>
                 <td>{{ row.nombre }}</td>
                 <td>{{ row.correo }}</td>
                 <td>{{ row.telefono }}</td>
@@ -31,6 +35,14 @@
 </div>
 <div class="mui-tabs__pane" id="tabForm">
     <form class="mui-form" ng-submit="guardar()">
+        <div class="mui-row">
+            <div class="mui-col-md-12 mui--text-center">
+                <img ng-src="{{data.icono}}" class="img-redonda" />
+            </div>
+            <div class="mui-col-md-12 mui--text-center">
+                    <input type="file" onchange="angular.element(this).scope().vistaPrevia(this.files)"/>
+                </div>
+        </div>
         <div class="mui-textfield">
             <input type="text" placeholder="Nombre" required ng-model="data.nombre">
         </div>

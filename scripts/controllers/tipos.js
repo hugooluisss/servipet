@@ -30,7 +30,7 @@ app.controller('tipos', function($scope, $http, auth, $location, params, $cookie
     }
 
     $scope.nuevo = function(){
-        $scope.data = {};
+        $scope.data = {icono: ""};
     }
 
     $scope.guardar = function(){
@@ -52,5 +52,17 @@ app.controller('tipos', function($scope, $http, auth, $location, params, $cookie
         }).then(function onSuccess(resp){
             $scope.lista = resp.data.lista;
         });
+    }
+
+    $scope.vistaPrevia = function(input){
+        if (input[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                console.log(e.target.result);
+                $scope.data.icono = e.target.result;
+                $scope.$apply();
+            }
+            reader.readAsDataURL(input[0]);
+        }
     }
 });

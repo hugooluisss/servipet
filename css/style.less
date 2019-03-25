@@ -1,19 +1,6 @@
 html, body{
     height:100%;
 
-    .img-responsive {
-        width: 100%;
-        max-width: 400px;
-        height: auto;
-    }
-
-    table{
-        .img-responsive{
-            max-height: 70px;
-            width: auto;
-        }
-    }
-
     & > [ui-view]{
         height: 100%;
         width: 100%;
@@ -73,4 +60,6 @@ html, body{
             }
         }
     }
+
+    @import "images.less";
 }

@@ -8,11 +8,11 @@
                 <div class="mui-panel">
                     <form class="mui-form" ng-submit="iniciarSesion()">
                         <div class="mui-textfield">
-                            <input type="text" placeholder="Correo electrónico">
+                            <input type="text" placeholder="Correo electrónico" ng-model="usuario.correo" required>
                             <label>Usuario</label>
                         </div>
                         <div class="mui-textfield">
-                            <input type="pass" placeholder="Contraseña">
+                            <input type="password" placeholder="Contraseña" ng-model="usuario.pass" required>
                             <label>Contraseña</label>
                         </div>
                         <button class="mui-btn mui-btn--primary">Iniciar</button>

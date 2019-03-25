@@ -1,0 +1,54 @@
+<div class="mui--text-title">Administración de Servicios</div>
+<br />
+<ul class="mui-tabs__bar">
+    <li class="mui--is-active"><a data-mui-toggle="tab" data-mui-controls="tabLista">Lista</a></li>
+    <li><a data-mui-toggle="tab" data-mui-controls="tabForm" ng-click="nuevo()">Agregar / Modificar</a></li>
+</ul>
+<div class="mui-tabs__pane mui--is-active" id="tabLista">
+    <table class="mui-table mui-table--bordered">
+        <thead>
+            <tr>
+                <th>Ícono</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="row in lista">
+                <td>
+                    <img class="img-responsive" ng-src="{{row.icono}}" />
+                </td>
+                <td>{{ row.nombre }}</td>
+                <td>{{ row.descripcion }}</td>
+                <td class="mui--text-right">
+                        <button class="mui-btn mui-btn--raised" title="Tamaños" ng-click="goSizes(row)"><i class="fa fa-compress" aria-hidden="true"></i></button>
+                    <button class="mui-btn mui-btn--raised" title="Servicios adicionales" ng-click="goAdicionales(row)"><i class="fa fa-plus" aria-hidden="true"></i></button>
+
+                    <button class="mui-btn mui-btn--raised mui-btn--primary" ng-click="set(row)"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                    <button class="mui-btn mui-btn--raised mui-btn--danger" ng-click="eliminar(row)"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>            
+</div>
+<div class="mui-tabs__pane" id="tabForm">
+    <form class="mui-form dropzone" ng-submit="guardar()">
+        <div class="mui-textfield">
+            <input type="text" placeholder="Nombre" required ng-model="data.nombre">
+        </div>
+        <div class="mui-textfield">
+            <textarea required ng-model="data.descripcion" placeholder="Descripción"></textarea>
+        </div>
+        <div class="mui-row">
+            <div class="mui-col-md-12">
+                <input type="file" onchange="angular.element(this).scope().vistaPrevia(this.files)"/>
+            </div>
+            <div class="mui-col-md-12 mui--text-center">
+                <img ng-src="{{data.icono}}" class="img-responsive" />
+            </div>
+        </div>
+        <button type="submit" class="mui-btn mui-btn--raised">Guardar</button>
+        
+    </form>
+</div>

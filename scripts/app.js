@@ -113,13 +113,35 @@ app.config(function($stateProvider, $urlRouterProvider, $cookiesProvider){
         }
     })
 
+    .state("dashboard.productos", {
+        url: "/productos/",
+        cache: false,
+        views: {
+            'contenido': {
+                templateUrl: "templates/productos.html",
+                controller: 'productos'
+            }
+        }
+    })
+
+    .state("dashboard.categoriasprod", {
+        url: "/categoriasprod/",
+        cache: false,
+        views: {
+            'contenido': {
+                templateUrl: "templates/categoriasProductos.html",
+                controller: 'categoriasprod'
+            }
+        }
+    })
+
     $urlRouterProvider.otherwise('/login');
 });
 
 app.factory('params', function() { 
     return { 
-        //server : 'http://localhost/servipet/wsServipet/'
-        server: 'http://192.168.2.2/servipet/wsServipet/'
+        server : 'http://localhost/servipet/wsServipet/'
+        //server: 'http://192.168.2.2/servipet/wsServipet/'
     }; 
 });
 

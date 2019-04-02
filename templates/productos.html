@@ -1,0 +1,66 @@
+<div class="mui--text-title">Administración de productos</div>
+<div class="mui-row">
+    <div class="mui-col-md-12" style="text-align: right">
+        <a class="mui-btn mui-btn--accent" ui-sref="dashboard.categoriasprod">Categorías</a>
+    </div>
+</div>
+<br />
+<ul class="mui-tabs__bar">
+    <li class="mui--is-active"><a data-mui-toggle="tab" data-mui-controls="tabLista">Lista</a></li>
+    <li><a data-mui-toggle="tab" data-mui-controls="tabForm" ng-click="nuevo()">Agregar / Modificar</a></li>
+</ul>
+<div class="mui-tabs__pane mui--is-active" id="tabLista">
+    <table class="mui-table mui-table--bordered">
+        <thead>
+            <tr>
+                <th>&nbsp;</th>
+                <th>Nombre</th>
+                <th>Categoría</th>
+                <th>Precio</th>
+                <th>&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="row in lista">
+                <td>
+                    <img class="img-redonda" ng-src="{{row.icono}}" />
+                </td>
+                <td>{{ row.nombre }}</td>
+                <td>{{ row.categoria }}</td>
+                <td>{{ row.precio }}</td>
+                <td class="mui--text-right">
+                    <button class="mui-btn mui-btn--raised mui-btn--primary" ng-click="set(row)"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                    <button class="mui-btn mui-btn--raised mui-btn--danger" ng-click="eliminar(row)"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>            
+</div>
+<div class="mui-tabs__pane" id="tabForm">
+    <form class="mui-form" ng-submit="guardar()">
+        <div class="mui-row">
+            <div class="mui-col-md-12 mui--text-center">
+                <img ng-src="{{data.icono}}" class="img-redonda" />
+            </div>
+            <div class="mui-col-md-12 mui--text-center">
+                    <input type="file" onchange="angular.element(this).scope().vistaPrevia(this.files)"/>
+                </div>
+        </div>
+        <div class="mui-textfield">
+            <input type="text" placeholder="Nombre" required ng-model="data.nombre">
+        </div>
+        <div class="mui-select">
+            <select ng-model="data.idCategoria">
+                <option ng-repeat="row in categorias" value="{{row.idCategoria}}">{{row.nombre}}</option>
+            </select>
+            <label>Selecciona una categoría</label>
+        </div>
+        <div class="mui-textfield">
+            <textarea placeholder="Descripción" required ng-model="data.descripcion"></textarea>
+        </div>
+        <div class="mui-textfield">
+            <input type="text" placeholder="Precio" required ng-model="data.precio" min="0">
+        </div>
+        <button type="submit" class="mui-btn mui-btn--raised">Guardar</button>
+    </form>
+</div>
